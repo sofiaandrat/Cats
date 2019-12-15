@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Presenter
 {
-    interface ILoginPresenter
+    interface IAddFeederPresenter
     {
-        List <int> Login();
+        bool CheckPassword(int UserId, string password);
+        void AddFeeder(int UserId, int amount, string tag);
     }
 }

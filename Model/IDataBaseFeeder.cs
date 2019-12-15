@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Presenter
+namespace Model
 {
-    interface ILoginPresenter
+    interface IDataBaseFeeder
     {
-        List <int> Login();
     }
 }

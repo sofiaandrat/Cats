@@ -16,6 +16,7 @@ namespace View
             AdminPresenter queue = new AdminPresenter();
             return queue.RegistrationQueuePresenter();
         }
+
         public void AccessRegistration(string login, string email, string hash_password, int typeId)
         {
             AccessRegistration form = new AccessRegistration(login, email, hash_password, typeId);

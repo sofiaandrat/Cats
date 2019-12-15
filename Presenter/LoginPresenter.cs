@@ -16,7 +16,7 @@ namespace Presenter
             this.login = login;
             this.password = password;
         }
-        public int Login()
+        public List <int> Login()
         {
             DataBaseUser login = new DataBaseUser();
             return login.Login(this.login, this.password);

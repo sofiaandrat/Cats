@@ -23,15 +23,16 @@ namespace View
     {
         DataTable dt;
         Thread queue;
+        static Mutex mutexObj;
         public Admin()
         {
             InitializeComponent();
             DataTable dt = new DataTable();
+            mutexObj = new Mutex();
             this.queue = new Thread(new ThreadStart(Queue));
             queue.Start();
-            //int index = Registration.CurrentCell.Column.DisplayIndex;
-            //MessageBox.Show(dataRow["name"].toString() + " " + dataRow["email"].toString());
         }
+
         public void Queue()
         {
             while(true)
@@ -48,7 +49,7 @@ namespace View
 
         private void Registration_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.queue.Suspend();
+            mutexObj.WaitOne();
             AdminView adminView = new AdminView();
             DataGrid gd = (DataGrid)sender;
             DataRowView row_selected = gd.SelectedItem as DataRowView;
@@ -60,7 +61,7 @@ namespace View
                 int typeId = Convert.ToInt32(row_selected["typeId"].ToString());
                 adminView.AccessRegistration(login, email, hash_password, typeId);
             }
-            this.queue.Resume();
+            mutexObj.ReleaseMutex();
         }
     }
 }

@@ -44,8 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessRegistrationPresenter.cs" />
+    <Compile Include="AddFeederPresenter.cs" />
     <Compile Include="AdminPresenter.cs" />
     <Compile Include="IAccessRegistrationPresenter.cs" />
+    <Compile Include="IAddFeederPresenter.cs" />
     <Compile Include="IAdminPresenter.cs" />
     <Compile Include="ILoginPresenter.cs" />
     <Compile Include="IRegistrationPresenter.cs" />

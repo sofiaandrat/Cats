@@ -47,8 +47,10 @@
   <ItemGroup>
     <Compile Include="AdminModel.cs" />
     <Compile Include="DataBase.cs" />
+    <Compile Include="DataBaseFeeder.cs" />
     <Compile Include="DataBaseUser.cs" />
     <Compile Include="IAdminModel.cs" />
+    <Compile Include="IDataBaseFeeder.cs" />
     <Compile Include="IDataBaseUser.cs" />
     <Compile Include="RegistrationData.cs" />
     <Compile Include="User.cs" />

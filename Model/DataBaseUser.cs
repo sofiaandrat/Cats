@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class DataBaseUser:DataBase
+    public class DataBaseUser:DataBase, IDataBaseUser
     {
         public DataBaseUser()
         {
@@ -70,19 +70,20 @@ namespace Model
             return true;
         }
 
-        public int Login(string password, string login)
+        public List <int> Login(string password, string login)
         {
             string hash_password = hash(password);
-            string query = "SELECT typeId FROM users WHERE name = @login AND hash_password = @hash_password";
+            string query = "SELECT typeId, id FROM users WHERE name = @login AND hash_password = @hash_password";
             SQLiteCommand myCommand = new SQLiteCommand(query, this.myConnection);
             this.OpenConnection();
             myCommand.Parameters.AddWithValue("@login", login);
             myCommand.Parameters.AddWithValue("@hash_password", hash_password);
             SQLiteDataReader reader = myCommand.ExecuteReader();
+            
             if (reader.Read())
-                return (int)reader.GetInt32(0);
+                return new List<int>() { (int)reader.GetInt32(0), (int)reader.GetInt32(1) };
             else
-                return 0;
+                return new List<int>() { 0, 0 };
         }
 
         public void Delete(string login)
@@ -92,6 +93,16 @@ namespace Model
             this.OpenConnection();
             myCommand.Parameters.AddWithValue("@login", login);
             myCommand.ExecuteNonQuery();
+        }
+
+        public string TakeALogin(int userId)
+        {
+            string query = "SELECT name FROM users WHERE id = @id";
+            SQLiteCommand myCommand = new SQLiteCommand(query, this.myConnection);
+            this.OpenConnection();
+            myCommand.Parameters.AddWithValue("@id", userId);
+            SQLiteDataReader reader = myCommand.ExecuteReader();
+            return (string)reader.GetString(0);
         }
     }
 }

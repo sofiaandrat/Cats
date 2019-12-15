@@ -34,12 +34,17 @@ namespace Cats
         private void Log_in_Click(object sender, RoutedEventArgs e)
         {
             LoginView mainWindow = new LoginView(Login.Text, PasswordBox.Password);
-            int flag = mainWindow.Presenter();
-            if (flag == 0)
+            List <int> data = mainWindow.Presenter();
+            if (data[0] == 0)
                 Wrong_entrance.Visibility = Visibility.Visible;
-            if (flag == 2)
+            if (data[0] == 2)
             {
                 Admin form = new Admin();
+                form.Show();
+            }
+            if (data[0] == 1)
+            {
+                UserProfiler form = new UserProfiler(data[1]);
                 form.Show();
             }
         }

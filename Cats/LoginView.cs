@@ -16,7 +16,7 @@ namespace View
             this.password = password;
             this.login = login;
         }
-        public int Presenter()
+        public List <int> Presenter()
         {
             LoginPresenter login = new LoginPresenter(this.login, this.password);
             return login.Login();            
