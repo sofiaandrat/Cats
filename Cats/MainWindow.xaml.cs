@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using View;
 
 namespace Cats
 {
@@ -29,6 +30,18 @@ namespace Cats
         {
             Registration form = new Registration();
             form.Show();
+        }
+        private void Log_in_Click(object sender, RoutedEventArgs e)
+        {
+            LoginView mainWindow = new LoginView(Login.Text, PasswordBox.Password);
+            int flag = mainWindow.Presenter();
+            if (flag == 0)
+                Wrong_entrance.Visibility = Visibility.Visible;
+            if (flag == 2)
+            {
+                Admin form = new Admin();
+                form.Show();
+            }
         }
     }
 }

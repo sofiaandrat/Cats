@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cats", "Cats\Cats.csproj", "{C9F80939-1EBD-4841-9538-54671B705FCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "Cats\View.csproj", "{C9F80939-1EBD-4841-9538-54671B705FCD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{162AB870-8266-4964-ABA5-4FF653D69CCF} = {162AB870-8266-4964-ABA5-4FF653D69CCF}
 	EndProjectSection

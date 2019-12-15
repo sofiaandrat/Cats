@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace Cats
 {
@@ -26,9 +27,9 @@ namespace Cats
 
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
-            RegistrationView Registration = new RegistrationView(email.Text,Password.Password,Login.Text);
+            RegistrationView Registration = new RegistrationView(email.Text, Password.Password, Login.Text);
             Login_in_use.Visibility = Visibility.Hidden;
-            if (Registration.CheckPresenter())
+            if (!Registration.CheckPresenter())
                 Registration.Presenter();
             else
                 Login_in_use.Visibility = Visibility.Visible;

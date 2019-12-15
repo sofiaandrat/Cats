@@ -17,38 +17,50 @@ namespace Model
         }
         public void Insert(string name, string email, string password, int typeId = 1)
         {
-            DataBaseUser objectDataBase = new DataBaseUser();
             string query = "INSERT INTO registration ('name', 'email', 'hash_password', 'typeId') VALUES (@name, @email, @hash_password, @typeId)";
-            SQLiteCommand myCommand = new SQLiteCommand(query, objectDataBase.myConnection);
-            objectDataBase.OpenConnection();
+            SQLiteCommand myCommand = new SQLiteCommand(query, this.myConnection);
+            this.OpenConnection();
             myCommand.Parameters.AddWithValue("@name", name);
             myCommand.Parameters.AddWithValue("@email", email);
             myCommand.Parameters.AddWithValue("@hash_password", hash(password));
             myCommand.Parameters.AddWithValue("@typeId", typeId);
             int number = myCommand.ExecuteNonQuery();
-            objectDataBase.CloseConnection();
+            this.CloseConnection();
         }
         private string hash(string password)
         {
-            byte[] salt;
-            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
-            byte[] hash = pbkdf2.GetBytes(20);
-            byte[] hashBytes = new byte[36];
-            Array.Copy(salt, 0, hashBytes, 0, 16);
-            Array.Copy(hash, 0, hashBytes, 16, 20);
-            string savedPasswordHash = Convert.ToBase64String(hashBytes);
-            return savedPasswordHash;
+            return password;
         }
-        public bool IsItFree()
+        public bool IsItFree(string name, string email)
         {
-            DataBaseUser objectDataBase = new DataBaseUser();
-            string query = "SELECT * FROM users WHERE name = name OR email = email";
-            SQLiteCommand myCommand = new SQLiteCommand(query, objectDataBase.myConnection);
-            objectDataBase.OpenConnection();
-            if (!myCommand.ExecuteReader().Read())
+            string query1 = "SELECT name FROM users WHERE name = @name OR email = @email";
+            SQLiteCommand myCommand = new SQLiteCommand(query1, this.myConnection);
+            string query2 = "SELECT name FROM registration WHERE name = @name OR email = @email";
+            SQLiteCommand myCommand1 = new SQLiteCommand(query2, this.myConnection);
+            this.OpenConnection();
+            myCommand.Parameters.AddWithValue("@name", name);
+            myCommand.Parameters.AddWithValue("@email", email);
+            myCommand1.Parameters.AddWithValue("@name", name);
+            myCommand1.Parameters.AddWithValue("@email", email);
+            SQLiteDataReader reader = myCommand.ExecuteReader();
+            SQLiteDataReader reader1 = myCommand1.ExecuteReader();
+            if (!reader.Read() || !reader1.Read())
                 return false;
             return true;
+        }
+        public int Login(string password, string login)
+        {
+            string hash_password = hash(password);
+            string query = "SELECT typeId FROM users WHERE name = @login AND hash_password = @hash_password";
+            SQLiteCommand myCommand = new SQLiteCommand(query, this.myConnection);
+            this.OpenConnection();
+            myCommand.Parameters.AddWithValue("@login", login);
+            myCommand.Parameters.AddWithValue("@hash_password", hash_password);
+            SQLiteDataReader reader = myCommand.ExecuteReader();
+            if (reader.Read())
+                return (int)reader.GetInt32(0);
+            else
+                return 0;
         }
     }
 }

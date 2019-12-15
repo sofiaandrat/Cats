@@ -25,7 +25,7 @@ namespace Presenter
         public bool Check()
         {
             DataBaseUser checking = new DataBaseUser();
-            return checking.IsItFree();
+            return checking.IsItFree(login, email);
         }
     }
 }

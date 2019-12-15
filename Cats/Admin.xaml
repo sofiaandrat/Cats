@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="Admin" Height="450" Width="800">
     <Grid>
-        
+        <Label Content="Users" HorizontalAlignment="Left" Margin="28.4,16.45,0,0" VerticalAlignment="Top" Width="231.2" FontFamily="Yu Gothic UI" FontSize="20"/>
+        <Label Content="Queue of registration" HorizontalAlignment="Left" Margin="28.4,295.4,0,0" VerticalAlignment="Top" Width="231.2" FontFamily="Yu Gothic UI" FontSize="20"/>
+        <ListBox HorizontalAlignment="Left" Height="355.2" Margin="284.4,46.4,0,0" VerticalAlignment="Top" Width="231.2" IsSynchronizedWithCurrentItem="False"/>
+        <ListBox HorizontalAlignment="Left" Height="355.2" Margin="536.4,46.4,0,0" VerticalAlignment="Top" Width="231.2" IsSynchronizedWithCurrentItem="False"/>
+        <Label Content="Feeders" HorizontalAlignment="Left" Margin="284.4,16.45,0,0" VerticalAlignment="Top" Width="231.2" FontFamily="Yu Gothic UI" FontSize="20"/>
+        <Label Content="List of logs" HorizontalAlignment="Left" Margin="536.4,16.45,0,0" VerticalAlignment="Top" Width="231.2" FontFamily="Yu Gothic UI" FontSize="20"/>
+        <DataGrid x:Name="Users" HorizontalAlignment="Left" Height="232" Margin="28,58,0,0" VerticalAlignment="Top" Width="232" Background="White" BorderBrush="#FF020202"/>
+        <DataGrid x:Name="Registration" HorizontalAlignment="Left" Height="70" Margin="28,332,0,0" VerticalAlignment="Top" Width="232" BorderBrush="Black" Foreground="Black" ScrollViewer.CanContentScroll="True" HorizontalGridLinesBrush="#FF1D1B1B" VerticalGridLinesBrush="#FF1D1B1B"/>
+
     </Grid>
 </Window>

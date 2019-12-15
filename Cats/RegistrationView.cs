@@ -26,7 +26,7 @@ namespace Cats
         public bool CheckPresenter()
         {
             RegistrationPresenter reg = new RegistrationPresenter(email, password, login);
-           return reg.Check();
+            return reg.Check();
         }
     }
 }

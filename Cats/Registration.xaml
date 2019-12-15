@@ -15,7 +15,6 @@
         <TextBox x:Name="email" HorizontalAlignment="Left" Height="33" Margin="34.9,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontFamily="Yu Gothic UI" FontSize="20"/>
         <Label HorizontalAlignment="Left" Margin="33.7,142.2,0,0" VerticalAlignment="Top" FontFamily="Yu Gothic UI" FontSize="20" Content="Login:"/>
         <TextBox x:Name="Login" HorizontalAlignment="Left" Margin="33.7,172.4,0,0" VerticalAlignment="Top" FontFamily="Yu Gothic UI" FontSize="20" Width="200"/>
-        <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label x:Name="Login_in_use" Content="Login or email is incorrect" HorizontalAlignment="Left" Margin="35,215,0,0" VerticalAlignment="Top" Width="199" IsEnabled="True" Visibility="Hidden" FontSize="14" FontWeight="Bold"/>
 
     </Grid>
