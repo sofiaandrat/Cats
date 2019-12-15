@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class User
+    public class User
     {
         private int userId;
         public int UserId
@@ -33,7 +33,7 @@ namespace Model
         {
             get { return typeId; }
         }
-        public User(int userId, string name, string email, string hash_password, int typeId)
+        public User(string name, string email, string hash_password, int typeId, int userId = 1)
         {
             this.userId = userId;
             this.name = name;

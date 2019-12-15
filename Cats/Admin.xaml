@@ -14,7 +14,8 @@
         <Label Content="Feeders" HorizontalAlignment="Left" Margin="284.4,16.45,0,0" VerticalAlignment="Top" Width="231.2" FontFamily="Yu Gothic UI" FontSize="20"/>
         <Label Content="List of logs" HorizontalAlignment="Left" Margin="536.4,16.45,0,0" VerticalAlignment="Top" Width="231.2" FontFamily="Yu Gothic UI" FontSize="20"/>
         <DataGrid x:Name="Users" HorizontalAlignment="Left" Height="232" Margin="28,58,0,0" VerticalAlignment="Top" Width="232" Background="White" BorderBrush="#FF020202"/>
-        <DataGrid x:Name="Registration" HorizontalAlignment="Left" Height="70" Margin="28,332,0,0" VerticalAlignment="Top" Width="232" BorderBrush="Black" Foreground="Black" ScrollViewer.CanContentScroll="True" HorizontalGridLinesBrush="#FF1D1B1B" VerticalGridLinesBrush="#FF1D1B1B"/>
+        <DataGrid x:Name="Registration" HorizontalAlignment="Left" Height="70" Margin="28,332,0,0" VerticalAlignment="Top" Width="232" BorderBrush="Black" Foreground="Black" ScrollViewer.CanContentScroll="True" HorizontalGridLinesBrush="#FF1D1B1B" VerticalGridLinesBrush="#FF1D1B1B" SelectionChanged="Registration_SelectionChanged" ItemsSource="{Binding Path=Customers}"
+                  SelectedItem="{Binding Path=SelectedCustomer, Mode=TwoWay}"/>
 
     </Grid>
 </Window>

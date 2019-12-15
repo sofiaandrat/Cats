@@ -22,15 +22,15 @@ namespace View
     public partial class Admin : Window
     {
         DataTable dt;
+        Thread queue;
         public Admin()
         {
             InitializeComponent();
             DataTable dt = new DataTable();
-            Thread queue = new Thread(new ThreadStart(Queue));
+            this.queue = new Thread(new ThreadStart(Queue));
             queue.Start();
-            //AdminView adminView = new AdminView();
-            //dt = adminView.Registration_queue();
-            //Registration.ItemsSource = dt.DefaultView;
+            //int index = Registration.CurrentCell.Column.DisplayIndex;
+            //MessageBox.Show(dataRow["name"].toString() + " " + dataRow["email"].toString());
         }
         public void Queue()
         {
@@ -44,6 +44,23 @@ namespace View
                 }));
                 Thread.Sleep(10000);
             }
+        }
+
+        private void Registration_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.queue.Suspend();
+            AdminView adminView = new AdminView();
+            DataGrid gd = (DataGrid)sender;
+            DataRowView row_selected = gd.SelectedItem as DataRowView;
+            if(row_selected != null)
+            {
+                string login = row_selected["name"].ToString();
+                string email = row_selected["email"].ToString();
+                string hash_password = row_selected["hash_password"].ToString();
+                int typeId = Convert.ToInt32(row_selected["typeId"].ToString());
+                adminView.AccessRegistration(login, email, hash_password, typeId);
+            }
+            this.queue.Resume();
         }
     }
 }

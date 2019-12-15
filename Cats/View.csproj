@@ -74,6 +74,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AccessRegistration.xaml.cs">
+      <DependentUpon>AccessRegistration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccessRegistrationView.cs" />
     <Compile Include="Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
@@ -83,6 +87,10 @@
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegistrationView.cs" />
+    <Page Include="AccessRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
