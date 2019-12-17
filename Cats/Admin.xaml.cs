@@ -21,10 +21,10 @@ namespace View
     /// </summary>
     public partial class Admin : Window
     {
-        DataTable dt;
-        DataTable users;
-        Thread queue;
-        static Mutex mutexObj;
+        private DataTable dt;
+        private DataTable users;
+        private Thread queue;
+        private static Mutex mutexObj;
         public Admin()
         {
             InitializeComponent();

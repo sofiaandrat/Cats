@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -17,37 +18,49 @@ namespace Model
             mutex = new Mutex();
         }
 
-        
-
         public void AddFeeder(int UserId, int amount, string tag)
         {
             mutex.WaitOne();
             string query = "INSERT INTO feeder ('userId', 'amount') VALUES (@userId, @amount)";
             SQLiteCommand myCommand = new SQLiteCommand(query, this.myConnection);
-            this.OpenConnection();
+            OpenConnection();
             myCommand.Parameters.AddWithValue("@userId", UserId);
             myCommand.Parameters.AddWithValue("@amount", amount);
             myCommand.ExecuteNonQuery();
-            this.CloseConnection();
+            CloseConnection();
             string query1 = "SELECT feederId FROM feeder";
-            SQLiteCommand myCommand1 = new SQLiteCommand(query1, this.myConnection);
-            this.OpenConnection();
+            SQLiteCommand myCommand1 = new SQLiteCommand(query1, myConnection);
+            OpenConnection();
             SQLiteDataReader reader = myCommand1.ExecuteReader();
             int feederId = 0;
             while (reader.Read())
                 feederId = reader.GetInt32(0);
-            this.CloseConnection();
+            CloseConnection();
             if (tag != "")
             {
                 string query2 = "INSERT INTO tags ('feederId', 'tagStr') VALUES (@feederId, @tagStr)";
-                SQLiteCommand myCommand2 = new SQLiteCommand(query2, this.myConnection);
-                this.OpenConnection();
+                SQLiteCommand myCommand2 = new SQLiteCommand(query2, myConnection);
+                OpenConnection();
                 myCommand2.Parameters.AddWithValue("@feederId", feederId);
                 myCommand2.Parameters.AddWithValue("@tagStr", tag);
                 myCommand2.ExecuteNonQuery();
-                this.CloseConnection();
+                CloseConnection();
             }
             mutex.ReleaseMutex();
+        }
+
+        public DataTable update(int userId)
+        {
+            string query = "SELECT feederId, amount FROM feeder WHERE userId = @userId";
+            SQLiteCommand myCommand = new SQLiteCommand(query, myConnection);
+            myCommand.Parameters.AddWithValue("@userId", userId);
+            OpenConnection();
+            myCommand.ExecuteNonQuery();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(myCommand);
+            DataTable dt = new DataTable("feeder");
+            adapter.Fill(dt);
+            CloseConnection();
+            return dt;
         }
     }
 }

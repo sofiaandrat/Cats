@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,16 +21,45 @@ namespace View
     public partial class UserProfiler : Window
     {
         private int UserId;
+        private DataTable feeders;
+        private DataTable tags;
         public UserProfiler(int UserId)
         {
             InitializeComponent();
             this.UserId = UserId;
+            UserProfilerView view = new UserProfilerView();
+            feeders = view.updateFeederList(UserId);
+            Feeders.Dispatcher.BeginInvoke(new Action(delegate ()
+            {
+                Feeders.ItemsSource = feeders.DefaultView;
+            }));
         }
 
         private void AddFeeder_Click(object sender, RoutedEventArgs e)
         {
             UserProfilerView view = new UserProfilerView();
-            view.AddFeeder(this.UserId);
+            view.AddFeeder(UserId);
+            feeders = view.updateFeederList(UserId);
+            Feeders.Dispatcher.BeginInvoke(new Action(delegate ()
+            {
+                Feeders.ItemsSource = feeders.DefaultView;
+            }));
+        }
+
+        private void Feeders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UserProfilerView userView = new UserProfilerView();
+            DataGrid gd = (DataGrid)sender;
+            DataRowView row_selected = gd.SelectedItem as DataRowView;
+            if (row_selected != null)
+            {
+                int feederId = Convert.ToInt32(row_selected["feederId"].ToString());
+                tags = userView.showTags(feederId);
+            }
+            Tags.Dispatcher.BeginInvoke(new Action(delegate ()
+            {
+                Tags.ItemsSource = tags.DefaultView;
+            }));
         }
     }
 }

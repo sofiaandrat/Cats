@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    interface IDataBaseFeeder
+    interface IDataBaseTags
     {
-        DataTable update(int userId);
+        DataTable showTags(int feederId);
     }
 }

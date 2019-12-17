@@ -82,6 +82,9 @@
       <DependentUpon>AddFeeder.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddFeederView.cs" />
+    <Compile Include="AddTag.xaml.cs">
+      <DependentUpon>AddTag.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddFeeder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTag.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

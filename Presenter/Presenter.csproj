@@ -51,8 +51,10 @@
     <Compile Include="IAdminPresenter.cs" />
     <Compile Include="ILoginPresenter.cs" />
     <Compile Include="IRegistrationPresenter.cs" />
+    <Compile Include="IUserProfilerPresenter.cs" />
     <Compile Include="LoginPresenter.cs" />
     <Compile Include="RegistrationPresenter.cs" />
+    <Compile Include="UserProfilerPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

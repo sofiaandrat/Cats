@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Presenter
 {
-    interface IDataBaseFeeder
+    interface IUserProfilerPresenter
     {
-        DataTable update(int userId);
+        DataTable updateFeederList();
+        DataTable showTags(int feederId);
     }
 }
