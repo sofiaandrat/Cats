@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,5 +15,6 @@ namespace Model
         List <int> Login(string login, string password);
         void Delete(string login);
         string TakeALogin(int userId);
+        DataTable UsersList();
     }
 }

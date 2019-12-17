@@ -18,12 +18,13 @@ namespace Presenter
         {
             DataBaseUser db = new DataBaseUser();
             string login = db.TakeALogin(UserId);
-            return db.Login(password, login)[1] == 0;
+            return db.Login(password, login)[1] != 0;
         }
 
         public void AddFeeder(int UserId, int amount, string tag)
         {
-
+            DataBaseFeeder dataBaseFeeder = new DataBaseFeeder();
+            dataBaseFeeder.AddFeeder(UserId, amount, tag);
         }
     }
 }

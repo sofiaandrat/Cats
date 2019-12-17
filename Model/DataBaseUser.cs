@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Data.SQLite;
 using System.IO;
@@ -65,9 +66,11 @@ namespace Model
             myCommand1.Parameters.AddWithValue("@email", email);
             SQLiteDataReader reader = myCommand.ExecuteReader();
             SQLiteDataReader reader1 = myCommand1.ExecuteReader();
+            bool flag = true;
             if (!reader.Read() || !reader1.Read())
-                return false;
-            return true;
+                flag = false;
+            this.CloseConnection();
+            return flag;
         }
 
         public List <int> Login(string password, string login)
@@ -79,11 +82,13 @@ namespace Model
             myCommand.Parameters.AddWithValue("@login", login);
             myCommand.Parameters.AddWithValue("@hash_password", hash_password);
             SQLiteDataReader reader = myCommand.ExecuteReader();
-            
+            List<int> data;
             if (reader.Read())
-                return new List<int>() { (int)reader.GetInt32(0), (int)reader.GetInt32(1) };
+                data = new List<int>() { (int)reader.GetInt32(0), (int)reader.GetInt32(1) };
             else
-                return new List<int>() { 0, 0 };
+               data = new List<int>() { 0, 0 };
+            this.CloseConnection();
+            return data;
         }
 
         public void Delete(string login)
@@ -93,6 +98,7 @@ namespace Model
             this.OpenConnection();
             myCommand.Parameters.AddWithValue("@login", login);
             myCommand.ExecuteNonQuery();
+            this.CloseConnection();
         }
 
         public string TakeALogin(int userId)
@@ -102,7 +108,24 @@ namespace Model
             this.OpenConnection();
             myCommand.Parameters.AddWithValue("@id", userId);
             SQLiteDataReader reader = myCommand.ExecuteReader();
-            return (string)reader.GetString(0);
+            string login = "";
+            while (reader.Read())
+                login += reader.GetString(0);
+            this.CloseConnection();
+            return login;
+        }
+
+        public DataTable UsersList()
+        {
+            string query = "SELECT name, email FROM users";
+            SQLiteCommand myCommand = new SQLiteCommand(query, this.myConnection);
+            this.OpenConnection();
+            myCommand.ExecuteNonQuery();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(myCommand);
+            DataTable dt = new DataTable("users");
+            adapter.Fill(dt);
+            this.CloseConnection();
+            return dt;
         }
     }
 }

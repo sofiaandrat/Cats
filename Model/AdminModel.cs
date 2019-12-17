@@ -10,15 +10,26 @@ namespace Model
 {
     public class AdminModel
     {
-        private DataTable data;
         public AdminModel()
         {
-            RegistrationData data = new RegistrationData();
-            this.data = data.Apdate_queue();
+            
         }
         public DataTable Queue()
         {
-            return this.data;
+            RegistrationData data = new RegistrationData();
+            return data.Apdate_queue();
+        }
+
+        public DataTable UserList()
+        {
+            DataBaseUser data = new DataBaseUser();
+            return data.UsersList();
+        }
+
+        public void AddThread(ref Thread thread)
+        {
+            SynchronizationClass synchronizationClass = new SynchronizationClass();
+            synchronizationClass.SetThread(ref thread);
         }
     }
 }

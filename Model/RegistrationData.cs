@@ -13,7 +13,7 @@ namespace Model
 {
     public class RegistrationData:DataBase
     {
-        ArrayList queue = new ArrayList();
+        private ArrayList queue = new ArrayList();
         public RegistrationData()
         {
             myConnection = new SQLiteConnection("Data Source=users.sqlite3");

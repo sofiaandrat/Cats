@@ -22,14 +22,18 @@ namespace View
     public partial class Admin : Window
     {
         DataTable dt;
+        DataTable users;
         Thread queue;
         static Mutex mutexObj;
         public Admin()
         {
             InitializeComponent();
             DataTable dt = new DataTable();
+            DataTable users = new DataTable();
             mutexObj = new Mutex();
             this.queue = new Thread(new ThreadStart(Queue));
+            AdminView adminView = new AdminView();
+            adminView.AddThread(ref this.queue);
             queue.Start();
         }
 
@@ -39,11 +43,16 @@ namespace View
             {
                 AdminView adminView = new AdminView();
                 dt = adminView.Registration_queue();
+                users = adminView.Users_list();
                 Registration.Dispatcher.BeginInvoke(new Action(delegate ()
                 {
                     Registration.ItemsSource = dt.DefaultView;
                 }));
-                Thread.Sleep(10000);
+                Users.Dispatcher.BeginInvoke(new Action(delegate ()
+                {
+                    Users.ItemsSource = users.DefaultView;
+                }));
+                Thread.Sleep(5000);
             }
         }
 
