@@ -13,9 +13,6 @@ namespace Model
         public DataBase()
         {
         }
-        public void Insert()
-        {
-        }
 
         public void OpenConnection()
         {

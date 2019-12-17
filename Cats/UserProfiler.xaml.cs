@@ -23,6 +23,7 @@ namespace View
         private int UserId;
         private DataTable feeders;
         private DataTable tags;
+        private int currentFeederId;
         public UserProfiler(int UserId)
         {
             InitializeComponent();
@@ -55,11 +56,21 @@ namespace View
             {
                 int feederId = Convert.ToInt32(row_selected["feederId"].ToString());
                 tags = userView.showTags(feederId);
+                currentFeederId = feederId;
             }
             Tags.Dispatcher.BeginInvoke(new Action(delegate ()
             {
                 Tags.ItemsSource = tags.DefaultView;
             }));
+        }
+
+        private void AddTag_Click(object sender, RoutedEventArgs e)
+        {
+            if (Tags.Items.Count != 0)
+            {
+                UserProfilerView userProfilerView = new UserProfilerView();
+                userProfilerView.AddTag(currentFeederId);
+            }
         }
     }
 }

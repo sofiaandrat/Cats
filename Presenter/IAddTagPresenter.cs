@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Presenter
 {
-    interface IDataBaseTags
+    interface IAddTagPresenter
     {
-        DataTable showTags(int feederId);
         void AddTag(int feederId, string tagStr);
     }
 }

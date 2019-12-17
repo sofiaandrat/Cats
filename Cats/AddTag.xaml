@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="AddTag" Height="182.342" Width="447.026">
     <Grid Margin="0,0,3.6,2">
-        <Button x:Name="Access" Content="Accept tag" HorizontalAlignment="Left" Height="41" Margin="47,76,0,0" VerticalAlignment="Top" Width="163" Click="Access_Click" Background="#FF5FB760"/>
-        <Button x:Name="Reject" Content="Reject tag" HorizontalAlignment="Left" Height="41" Margin="252,76,0,0" VerticalAlignment="Top" Width="164" Click="Reject_Click" Background="#FFC25454"/>
-        <TextBox HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417"/>
+        <Button x:Name="AcceptTag" Content="Accept tag" HorizontalAlignment="Left" Height="41" Margin="47,76,0,0" VerticalAlignment="Top" Width="163" Background="#FF5FB760" Click="AcceptTag_Click"/>
+        <Button x:Name="RejectTag" Content="Reject tag" HorizontalAlignment="Left" Height="41" Margin="252,76,0,0" VerticalAlignment="Top" Width="164" Background="#FFC25454" Click="RejectTag_Click"/>
+        <TextBox x:Name="NewTag" HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417"/>
 
     </Grid>
 </Window>

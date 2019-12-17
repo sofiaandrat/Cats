@@ -85,6 +85,7 @@
     <Compile Include="AddTag.xaml.cs">
       <DependentUpon>AddTag.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddTagView.cs" />
     <Compile Include="Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>

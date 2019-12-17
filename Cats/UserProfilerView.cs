@@ -28,5 +28,11 @@ namespace View
             UserProfilerPresenter userProfilerPresenter = new UserProfilerPresenter();
             return userProfilerPresenter.showTags(feederId);
         }
+
+        public void AddTag(int feederId)
+        {
+            AddTag form = new AddTag(feederId);
+            form.Show();
+        }
     }
 }

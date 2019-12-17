@@ -19,9 +19,24 @@ namespace View
     /// </summary>
     public partial class AddTag : Window
     {
-        public AddTag()
+        private int feederId;
+        public AddTag(int feederId)
         {
             InitializeComponent();
+            this.feederId = feederId; 
+        }
+
+        private void RejectTag_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void AcceptTag_Click(object sender, RoutedEventArgs e)
+        {
+            AddTagView addTagView = new AddTagView();
+            addTagView.AddTag(feederId, NewTag.Text);
+            Close();
+            MessageBox.Show("Tag add successful");
         }
     }
 }

@@ -16,7 +16,7 @@
         <DataGrid x:Name="Feeders" HorizontalAlignment="Left" Height="212" Margin="163,55,0,0" VerticalAlignment="Top" Width="215" Background="#FFF7ECEC" Opacity="0.8" BorderBrush="#FF7295B7" SelectionChanged="Feeders_SelectionChanged" ItemsSource="{Binding Path=Customers}"
                   SelectedItem="{Binding Path=SelectedCustomer, Mode=TwoWay}"/>
         <DataGrid x:Name="Tags" HorizontalAlignment="Left" Height="145.6" Margin="429.4,59.4,0,0" VerticalAlignment="Top" Width="206.8" Background="#FFEDFFEC"/>
-        <Button Content="Add tag" HorizontalAlignment="Left" Height="29.6" Margin="429.4,210,0,0" VerticalAlignment="Top" Width="177.467" Cursor="Hand">
+        <Button x:Name="AddTag" Content="Add tag" HorizontalAlignment="Left" Height="29.6" Margin="429.4,210,0,0" VerticalAlignment="Top" Width="177.467" Cursor="Hand" Click="AddTag_Click">
             <Button.Background>
                 <ImageBrush ImageSource="D:\лабы универ\лабы шарпы\FatCat\add_tag_button.jpg"/>
             </Button.Background>

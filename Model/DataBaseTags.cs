@@ -32,5 +32,18 @@ namespace Model
             mutex.ReleaseMutex();
             return dt;
         }
+
+        public void AddTag(int feederId, string tagStr)
+        {
+            mutex.WaitOne();
+            string query = "INSERT INTO tags ('feederId', 'tagStr') VALUES (@feederId, @tagStr)";
+            SQLiteCommand myCommand = new SQLiteCommand(query, this.myConnection);
+            this.OpenConnection();
+            myCommand.Parameters.AddWithValue("@feederId", feederId);
+            myCommand.Parameters.AddWithValue("@tagStr", tagStr);
+            myCommand.ExecuteNonQuery();
+            this.CloseConnection();
+            mutex.ReleaseMutex();
+        }
     }
 }
