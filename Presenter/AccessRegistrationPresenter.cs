@@ -17,7 +17,8 @@ namespace Presenter
         {
             DataBaseUser dataBaseUser = new DataBaseUser();
             dataBaseUser.Insert(new User(login, email, hash_password, typeId));
-            dataBaseUser.Delete(login);
+            RegistrationData registrationData = new RegistrationData();
+            registrationData.Delete(login);
         }
     }
 }

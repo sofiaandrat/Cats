@@ -11,7 +11,6 @@ namespace Model
 {
     public class DataBaseFeeder:DataBase, IDataBaseFeeder
     {
-        private static Mutex mutex;
         public DataBaseFeeder()
         {
             myConnection = new SQLiteConnection("Data Source=users.sqlite3");
@@ -51,6 +50,7 @@ namespace Model
 
         public DataTable update(int userId)
         {
+            mutex.WaitOne();
             string query = "SELECT feederId, amount FROM feeder WHERE userId = @userId";
             SQLiteCommand myCommand = new SQLiteCommand(query, myConnection);
             myCommand.Parameters.AddWithValue("@userId", userId);
@@ -60,6 +60,7 @@ namespace Model
             DataTable dt = new DataTable("feeder");
             adapter.Fill(dt);
             CloseConnection();
+            mutex.ReleaseMutex();
             return dt;
         }
     }

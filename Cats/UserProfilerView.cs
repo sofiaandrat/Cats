@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using Presenter;
 
 namespace View
@@ -33,6 +35,17 @@ namespace View
         {
             AddTag form = new AddTag(feederId);
             form.Show();
+        }
+
+        public void deleteTag(int tagId)
+        {
+            DeleteTag form = new DeleteTag(tagId);
+            form.Show();
+        }
+
+        internal void AddThread(ref Thread tagsThread)
+        {
+            throw new NotImplementedException();
         }
     }
 }

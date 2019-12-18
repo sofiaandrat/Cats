@@ -11,7 +11,6 @@ namespace Model
 {
     public class DataBaseTags:DataBase, IDataBaseTags
     {
-        private static Mutex mutex;
         public DataBaseTags() 
         {
             mutex = new Mutex();
@@ -41,6 +40,18 @@ namespace Model
             this.OpenConnection();
             myCommand.Parameters.AddWithValue("@feederId", feederId);
             myCommand.Parameters.AddWithValue("@tagStr", tagStr);
+            myCommand.ExecuteNonQuery();
+            this.CloseConnection();
+            mutex.ReleaseMutex();
+        }
+
+        public void deleteTag(int tagId)
+        {
+            mutex.WaitOne();
+            string query = "DELETE FROM tags WHERE tagId = @tagId";
+            SQLiteCommand myCommand = new SQLiteCommand(query, this.myConnection);
+            this.OpenConnection();
+            myCommand.Parameters.AddWithValue("@tagId", tagId);
             myCommand.ExecuteNonQuery();
             this.CloseConnection();
             mutex.ReleaseMutex();

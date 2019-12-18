@@ -90,6 +90,10 @@
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdminView.cs" />
+    <Compile Include="DeleteTag.xaml.cs">
+      <DependentUpon>DeleteTag.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteTagView.cs" />
     <Compile Include="LoginView.cs" />
     <Compile Include="Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
@@ -112,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Admin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteTag.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

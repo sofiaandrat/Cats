@@ -22,5 +22,11 @@ namespace Presenter
             DataBaseTags dataBaseTags = new DataBaseTags();
             return dataBaseTags.showTags(feederId);
         }
+
+        public void deleteTag(int tagId)
+        {
+            DataBaseTags dataBaseTags = new DataBaseTags();
+            dataBaseTags.deleteTag(tagId);
+        }
     }
 }

@@ -13,7 +13,6 @@ namespace Model
         void Insert(string name, string email, string password, int typeId);
         bool IsItFree(string name, string email);
         List <int> Login(string login, string password);
-        void Delete(string login);
         string TakeALogin(int userId);
         DataTable UsersList();
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,6 +25,8 @@ namespace View
         private DataTable feeders;
         private DataTable tags;
         private int currentFeederId;
+        private Thread tagsThread;
+        private Mutex mutex;
         public UserProfiler(int UserId)
         {
             InitializeComponent();
@@ -34,10 +37,16 @@ namespace View
             {
                 Feeders.ItemsSource = feeders.DefaultView;
             }));
+            mutex = new Mutex();
+            tagsThread = new Thread(new ThreadStart(thread));
+            UserProfilerView userProfilerView = new UserProfilerView();
+            //userProfilerView.AddThread(ref tagsThread);
+            tagsThread.Start();
         }
 
         private void AddFeeder_Click(object sender, RoutedEventArgs e)
         {
+            mutex.WaitOne();
             UserProfilerView view = new UserProfilerView();
             view.AddFeeder(UserId);
             feeders = view.updateFeederList(UserId);
@@ -45,10 +54,12 @@ namespace View
             {
                 Feeders.ItemsSource = feeders.DefaultView;
             }));
+            mutex.ReleaseMutex();
         }
 
         private void Feeders_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            mutex.WaitOne();
             UserProfilerView userView = new UserProfilerView();
             DataGrid gd = (DataGrid)sender;
             DataRowView row_selected = gd.SelectedItem as DataRowView;
@@ -62,14 +73,52 @@ namespace View
             {
                 Tags.ItemsSource = tags.DefaultView;
             }));
+            mutex.ReleaseMutex();
         }
 
         private void AddTag_Click(object sender, RoutedEventArgs e)
         {
+            mutex.WaitOne();
             if (Tags.Items.Count != 0)
             {
                 UserProfilerView userProfilerView = new UserProfilerView();
                 userProfilerView.AddTag(currentFeederId);
+            }
+            mutex.ReleaseMutex();
+        }
+
+        private void Tags_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            mutex.WaitOne();
+            UserProfilerView userView = new UserProfilerView();
+            DataGrid gd = (DataGrid)sender;
+            DataRowView row_selected = gd.SelectedItem as DataRowView;
+            if (row_selected != null)
+            {
+                int tagId = Convert.ToInt32(row_selected["tagId"].ToString());
+                userView.deleteTag(tagId);
+            }
+            mutex.ReleaseMutex();
+        }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            mutex.WaitOne();
+            Close();
+            mutex.ReleaseMutex();
+        }
+
+        public void thread()
+        {
+            while (true)
+            {
+                UserProfilerView userView = new UserProfilerView();
+                tags = userView.showTags(currentFeederId);
+                Tags.Dispatcher.BeginInvoke(new Action(delegate ()
+                {
+                    Tags.ItemsSource = tags.DefaultView;
+                }));
+                Thread.Sleep(2000);
             }
         }
     }

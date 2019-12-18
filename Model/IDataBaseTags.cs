@@ -11,5 +11,6 @@ namespace Model
     {
         DataTable showTags(int feederId);
         void AddTag(int feederId, string tagStr);
+        void deleteTag(int tagId);
     }
 }

@@ -31,9 +31,9 @@ namespace View
             DataTable dt = new DataTable();
             DataTable users = new DataTable();
             mutexObj = new Mutex();
-            this.queue = new Thread(new ThreadStart(Queue));
+            queue = new Thread(new ThreadStart(Queue));
             AdminView adminView = new AdminView();
-            adminView.AddThread(ref this.queue);
+            adminView.AddThread(ref queue);
             queue.Start();
         }
 
@@ -52,7 +52,7 @@ namespace View
                 {
                     Users.ItemsSource = users.DefaultView;
                 }));
-                Thread.Sleep(5000);
+                Thread.Sleep(2000);
             }
         }
 
