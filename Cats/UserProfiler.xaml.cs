@@ -121,5 +121,17 @@ namespace View
                 Thread.Sleep(2000);
             }
         }
+
+        private void AddSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            UserProfilerView userProfilerView = new UserProfilerView();
+            userProfilerView.AddSchedule(currentFeederId);
+        }
+
+        private void Manual_Click(object sender, RoutedEventArgs e)
+        {
+            UserProfilerView userProfilerView = new UserProfilerView();
+            userProfilerView.ManualFeed(currentFeederId);
+        }
     }
 }

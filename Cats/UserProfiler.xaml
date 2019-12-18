@@ -22,11 +22,15 @@
             </Button.Background>
         </Button>
         <DataGrid HorizontalAlignment="Left" Height="228" Margin="521,53,0,0" VerticalAlignment="Top" Width="222" Background="#FFEDFFEC"/>
-        <Button x:Name="AddTag_Copy" Content="Add tag" HorizontalAlignment="Left" Height="29" Margin="521,290,0,0" VerticalAlignment="Top" Width="177" Cursor="Hand" Click="AddTag_Click">
+        <Button x:Name="AddSchedule" Content="Add schedule" HorizontalAlignment="Left" Height="29" Margin="521,290,0,0" VerticalAlignment="Top" Width="177" Cursor="Hand" Click="AddSchedule_Click">
             <Button.Background>
                 <ImageBrush ImageSource="D:\лабы универ\лабы шарпы\FatCat\add_tag_button.jpg"/>
             </Button.Background>
         </Button>
+        <Label x:Name="MyFeeders" Content="Feeders" HorizontalAlignment="Left" Margin="94,23,0,0" VerticalAlignment="Top" Width="92" FontSize="20"/>
+        <Label x:Name="MyTags" Content="Tags" HorizontalAlignment="Left" Margin="347,27,0,0" VerticalAlignment="Top" Width="92" FontSize="20"/>
+        <Label x:Name="Schedule" Content="Shedules" HorizontalAlignment="Left" Margin="597,23,0,0" VerticalAlignment="Top" Width="92" FontSize="20"/>
+        <Button x:Name="Manual" Content="Manual feeding" HorizontalAlignment="Left" Margin="521,328,0,0" VerticalAlignment="Top" Width="177" Height="32" Background="#FFEDFFEC" Click="Manual_Click"/>
 
     </Grid>
 </Window>

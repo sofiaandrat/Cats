@@ -1,0 +1,20 @@
+﻿<Window x:Class="View.AddSchedule"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="AddSchedule" Height="369.6" Width="335.6">
+    <Grid>
+        <Rectangle Fill="#FFE0E0E0" HorizontalAlignment="Left" Height="346" Margin="-9,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="355"/>
+        <Button x:Name="Add" Content="Add schedule" HorizontalAlignment="Left" Margin="85,281,0,0" VerticalAlignment="Top" Width="171" Height="49" Background="#FFC25454" BorderBrush="Black" FontSize="25" FontFamily="Yu Gothic UI" FontWeight="Bold" Click="Add_Click"/>
+        <Label Content="Amount of food" HorizontalAlignment="Left" Margin="26,6,0,0" VerticalAlignment="Top" Width="162" FontFamily="Yu Gothic UI" FontSize="20"/>
+        <Label x:Name="Time" HorizontalAlignment="Left" Margin="26,76,0,0" VerticalAlignment="Top" FontFamily="Yu Gothic UI" FontSize="17" Content="How often you want to feed your pet?"/>
+        <TextBox x:Name="amount" HorizontalAlignment="Left" Height="33" Margin="56,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontFamily="Yu Gothic UI" FontSize="20"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="33" Margin="56,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontFamily="Yu Gothic UI" FontSize="20"/>
+        <Label x:Name="Name" Content="Name of schedule" HorizontalAlignment="Left" Margin="26,134,0,0" VerticalAlignment="Top" Width="259" FontFamily="Yu Gothic UI" FontSize="20"/>
+        <TextBox x:Name="Timer" HorizontalAlignment="Left" Height="23" Margin="56,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+
+    </Grid>
+</Window>

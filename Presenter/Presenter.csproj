@@ -45,16 +45,20 @@
   <ItemGroup>
     <Compile Include="AccessRegistrationPresenter.cs" />
     <Compile Include="AddFeederPresenter.cs" />
+    <Compile Include="AddSchedulePresenter.cs" />
     <Compile Include="AddTagPresenter.cs" />
     <Compile Include="AdminPresenter.cs" />
     <Compile Include="IAccessRegistrationPresenter.cs" />
     <Compile Include="IAddFeederPresenter.cs" />
+    <Compile Include="IAddSchedulePresenter.cs" />
     <Compile Include="IAddTagPresenter.cs" />
     <Compile Include="IAdminPresenter.cs" />
     <Compile Include="ILoginPresenter.cs" />
+    <Compile Include="IManualFeedingPresenter.cs" />
     <Compile Include="IRegistrationPresenter.cs" />
     <Compile Include="IUserProfilerPresenter.cs" />
     <Compile Include="LoginPresenter.cs" />
+    <Compile Include="ManualFeedingPresenter.cs" />
     <Compile Include="RegistrationPresenter.cs" />
     <Compile Include="UserProfilerPresenter.cs" />
   </ItemGroup>

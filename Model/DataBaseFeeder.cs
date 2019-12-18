@@ -63,5 +63,26 @@ namespace Model
             mutex.ReleaseMutex();
             return dt;
         }
+
+        public void ManualFeeding(int feederId, int amount)
+        {
+            mutex.WaitOne();
+            string query = "SELECT amount FROM feeder WHERE feederId = @feederId";
+            SQLiteCommand myCommand = new SQLiteCommand(query, myConnection);
+            myCommand.Parameters.AddWithValue("@feederId", feederId);
+            OpenConnection();
+            SQLiteDataReader reader = myCommand.ExecuteReader();
+            int food = 0;
+            while (reader.Read())
+                food = reader.GetInt32(0);
+            amount = food - amount;
+            string query2 = "UPDATE feeder SET amount = @amount WHERE feederId = @feederId";
+            SQLiteCommand myCommand2 = new SQLiteCommand(query2, myConnection);
+            myCommand2.Parameters.AddWithValue("@feederId", feederId);
+            myCommand2.Parameters.AddWithValue("@amount", amount);
+            myCommand2.ExecuteNonQuery();
+            CloseConnection();
+            mutex.ReleaseMutex();
+        }
     }
 }

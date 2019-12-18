@@ -1,0 +1,15 @@
+﻿<Window x:Class="View.ManualFeeding"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="ManualFeeding" Height="171.094" Width="469.531">
+    <Grid>
+        <Button x:Name="AcceptFeed" Content="Accept feeding" HorizontalAlignment="Left" Height="41" Margin="47,76,0,0" VerticalAlignment="Top" Width="163" Background="#FF5FB760" Click="AcceptTag_Click"/>
+        <Button x:Name="RejectFeed" Content="Reject feeding" HorizontalAlignment="Left" Height="41" Margin="252,76,0,0" VerticalAlignment="Top" Width="164" Background="#FFC25454" Click="RejectTag_Click"/>
+        <TextBox x:Name="Amount" HorizontalAlignment="Left" Height="50" Margin="119,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" FontSize="25"/>
+
+    </Grid>
+</Window>

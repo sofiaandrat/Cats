@@ -82,6 +82,10 @@
       <DependentUpon>AddFeeder.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddFeederView.cs" />
+    <Compile Include="AddSchedule.xaml.cs">
+      <DependentUpon>AddSchedule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddScheduleView.cs" />
     <Compile Include="AddTag.xaml.cs">
       <DependentUpon>AddTag.xaml</DependentUpon>
     </Compile>
@@ -95,6 +99,10 @@
     </Compile>
     <Compile Include="DeleteTagView.cs" />
     <Compile Include="LoginView.cs" />
+    <Compile Include="ManualFeeding.xaml.cs">
+      <DependentUpon>ManualFeeding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManualFeedingView.cs" />
     <Compile Include="Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
@@ -108,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddFeeder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddSchedule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,6 +147,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ManualFeeding.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Registration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

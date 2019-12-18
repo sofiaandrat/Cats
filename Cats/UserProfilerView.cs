@@ -43,9 +43,16 @@ namespace View
             form.Show();
         }
 
-        internal void AddThread(ref Thread tagsThread)
+        public void AddSchedule(int feederId)
         {
-            throw new NotImplementedException();
+            AddSchedule form = new AddSchedule(feederId);
+            form.Show();
+        }
+
+        public void ManualFeed(int feederId)
+        {
+            ManualFeeding form = new ManualFeeding(feederId);
+            form.Show();
         }
     }
 }
