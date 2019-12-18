@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -47,6 +48,39 @@ namespace Model
             }
             CloseConnection();
             mutex.ReleaseMutex();
+        }
+
+        public List<Event> GetEvents()
+        {
+            mutex.WaitOne();
+            List<Event> events = new List<Event>();
+            string query1 = "SELECT scheduleId, time, amount FROM event";
+            SQLiteCommand myCommand = new SQLiteCommand(query1, myConnection);
+            OpenConnection();
+            myCommand.ExecuteNonQuery();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(myCommand);
+            DataTable dt = new DataTable("events");
+            adapter.Fill(dt);
+            foreach (DataRow row in dt.Rows)
+            {
+                var cells = row.ItemArray;
+                Event @event = new Event(Convert.ToInt32(cells.GetValue(0)), Convert.ToInt32(cells.GetValue(1)), Convert.ToInt32(cells.GetValue(2)));
+                events.Add(@event);
+            }
+            CloseConnection();
+            for(int i = 0; i < events.Count(); i++)
+            {
+                string query = "SELECT feederId FROM schedule WHERE SheduleId = @scheduleId";
+                SQLiteCommand myCommand1 = new SQLiteCommand(query, myConnection);
+                myCommand1.Parameters.AddWithValue("@scheduleId", events[i].ScheduleId);
+                OpenConnection();
+                SQLiteDataReader reader1 = myCommand1.ExecuteReader();
+                while (reader1.Read())
+                    events[events.Count() - 1].FeederId = reader1.GetInt32(0);
+                CloseConnection();
+            }
+            mutex.ReleaseMutex();
+            return events;
         }
     }
 }

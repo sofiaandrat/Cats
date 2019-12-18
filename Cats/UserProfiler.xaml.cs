@@ -40,7 +40,6 @@ namespace View
             mutex = new Mutex();
             tagsThread = new Thread(new ThreadStart(thread));
             UserProfilerView userProfilerView = new UserProfilerView();
-            //userProfilerView.AddThread(ref tagsThread);
             tagsThread.Start();
         }
 
@@ -117,6 +116,11 @@ namespace View
                 Tags.Dispatcher.BeginInvoke(new Action(delegate ()
                 {
                     Tags.ItemsSource = tags.DefaultView;
+                }));
+                time.Dispatcher.BeginInvoke(new Action(delegate ()
+                {
+                    int t = userView.AskTime();
+                    time.Content = (t / 60).ToString() + ":" + (t - (t / 60) * 60).ToString();
                 }));
                 Thread.Sleep(2000);
             }

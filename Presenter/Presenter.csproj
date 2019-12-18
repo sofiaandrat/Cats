@@ -54,10 +54,12 @@
     <Compile Include="IAddTagPresenter.cs" />
     <Compile Include="IAdminPresenter.cs" />
     <Compile Include="ILoginPresenter.cs" />
+    <Compile Include="IMainWindowPresenter.cs" />
     <Compile Include="IManualFeedingPresenter.cs" />
     <Compile Include="IRegistrationPresenter.cs" />
     <Compile Include="IUserProfilerPresenter.cs" />
     <Compile Include="LoginPresenter.cs" />
+    <Compile Include="MainWindowPresenter.cs" />
     <Compile Include="ManualFeedingPresenter.cs" />
     <Compile Include="RegistrationPresenter.cs" />
     <Compile Include="UserProfilerPresenter.cs" />
@@ -74,6 +76,9 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="NetworkCommsDotNet, Version=3.0.0.0, Culture=neutral, PublicKeyToken=f58108eb6480f6ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetworkCommsDotNet.3.0.3\lib\NetworkCommsDotNet.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />

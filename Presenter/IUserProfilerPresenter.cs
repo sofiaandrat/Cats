@@ -12,5 +12,6 @@ namespace Presenter
         DataTable updateFeederList();
         DataTable showTags(int feederId);
         void deleteTag(int tagId);
+        int AskTime();
     }
 }

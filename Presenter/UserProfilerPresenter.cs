@@ -28,5 +28,11 @@ namespace Presenter
             DataBaseTags dataBaseTags = new DataBaseTags();
             dataBaseTags.deleteTag(tagId);
         }
+
+        public int AskTime()
+        {
+            Client client = new Client();
+            return client.AskTime();
+        }
     }
 }

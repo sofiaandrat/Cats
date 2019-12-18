@@ -31,6 +31,7 @@
         <Label x:Name="MyTags" Content="Tags" HorizontalAlignment="Left" Margin="347,27,0,0" VerticalAlignment="Top" Width="92" FontSize="20"/>
         <Label x:Name="Schedule" Content="Shedules" HorizontalAlignment="Left" Margin="597,23,0,0" VerticalAlignment="Top" Width="92" FontSize="20"/>
         <Button x:Name="Manual" Content="Manual feeding" HorizontalAlignment="Left" Margin="521,328,0,0" VerticalAlignment="Top" Width="177" Height="32" Background="#FFEDFFEC" Click="Manual_Click"/>
+        <Label x:Name="time" Content="" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="49"/>
 
     </Grid>
 </Window>

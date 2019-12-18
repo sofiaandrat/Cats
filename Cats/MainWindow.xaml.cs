@@ -24,6 +24,7 @@ namespace Cats
         public MainWindow()
         {
             InitializeComponent();
+            MainWindowView loginView = new MainWindowView();
         }
 
         private void Registration_Click(object sender, RoutedEventArgs e)

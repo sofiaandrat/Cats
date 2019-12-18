@@ -46,18 +46,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminModel.cs" />
+    <Compile Include="AutomaticFeed.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="DataBaseFeeder.cs" />
     <Compile Include="DataBaseSchedule.cs" />
     <Compile Include="DataBaseTags.cs" />
     <Compile Include="DataBaseUser.cs" />
+    <Compile Include="Event.cs" />
     <Compile Include="IAdminModel.cs" />
+    <Compile Include="IAutomaticFeed.cs" />
+    <Compile Include="IClient.cs" />
     <Compile Include="IDataBaseFeeder.cs" />
     <Compile Include="IDataBaseSchedule.cs" />
     <Compile Include="IDataBaseTags.cs" />
     <Compile Include="IDataBaseUser.cs" />
     <Compile Include="ISynchronizationClass.cs" />
     <Compile Include="RegistrationData.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="SynchronizationClass.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
@@ -67,6 +72,9 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="NetworkCommsDotNet, Version=3.0.0.0, Culture=neutral, PublicKeyToken=f58108eb6480f6ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetworkCommsDotNet.3.0.3\lib\NetworkCommsDotNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.NonGeneric, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

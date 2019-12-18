@@ -54,5 +54,11 @@ namespace View
             ManualFeeding form = new ManualFeeding(feederId);
             form.Show();
         }
+
+        public int AskTime()
+        {
+            UserProfilerPresenter userProfilerPresenter = new UserProfilerPresenter();
+            return userProfilerPresenter.AskTime();
+        }
     }
 }
