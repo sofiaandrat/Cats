@@ -49,6 +49,7 @@
     <Compile Include="AutomaticFeed.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="DataBaseFeeder.cs" />
+    <Compile Include="DataBaseForTester.cs" />
     <Compile Include="DataBaseSchedule.cs" />
     <Compile Include="DataBaseTags.cs" />
     <Compile Include="DataBaseUser.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="IAutomaticFeed.cs" />
     <Compile Include="IClient.cs" />
     <Compile Include="IDataBaseFeeder.cs" />
+    <Compile Include="IDataBaseForTester.cs" />
     <Compile Include="IDataBaseSchedule.cs" />
     <Compile Include="IDataBaseTags.cs" />
     <Compile Include="IDataBaseUser.cs" />

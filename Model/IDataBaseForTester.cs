@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Model
 {
-    interface IClient
+    interface IDataBaseForTester
     {
-        int AskTime();
-        void EstablishTime(int speed);
+        DataTable TakeData();
     }
 }

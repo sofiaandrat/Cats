@@ -8,8 +8,15 @@
         Title="TesterWindow" Height="450" Width="800">
     <Grid>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="420" Margin="0,0,-0.4,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
-        <Slider HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Height="60" Width="337"/>
-        <Button x:Name="Switch" Content="OFF" HorizontalAlignment="Left" Margin="688,30,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" RenderTransformOrigin="0.5,0.5" Background="#FFE2B3B3" Click="Switch_Click"/>
+        <Slider x:Name="Speed" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Height="60" Width="337" Minimum="1" Maximum="60"/>
+        <Button x:Name="Switch" Content="ON" HorizontalAlignment="Left" Margin="688,30,0,0" VerticalAlignment="Top" Width="75" BorderBrush="Black" RenderTransformOrigin="0.5,0.5" Background="#FFE2B3B3" Click="Switch_Click"/>
+        <Label Content="Frequency " HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="116" FontSize="16"/>
+        <Label x:Name="SliderLabel" Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,90,0,0" Width="23" FontSize="14"/>
+        <Label x:Name="SliderLabel_Copy" Content="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="326,90,0,0" Width="28" FontSize="14"/>
+        <Label x:Name="Timer" Content="" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Width="46"/>
+        <Label Content="Speed:" HorizontalAlignment="Left" Margin="74,3,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="SpeedLabel" Content="" HorizontalAlignment="Left" Margin="125,3,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="Data" HorizontalAlignment="Left" Height="249" Margin="416,122,0,0" VerticalAlignment="Top" Width="327"/>
 
     </Grid>
 </Window>

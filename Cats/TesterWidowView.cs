@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace View
 {
     public class TesterWidowView
     {
-        private static TesterWindowPresenter testerWindowPresenter;
+        private TesterWindowPresenter testerWindowPresenter;
         public TesterWidowView()
         {
             testerWindowPresenter = new TesterWindowPresenter();
@@ -24,6 +25,21 @@ namespace View
         public void FinishEmulation()
         {
             testerWindowPresenter.FinishEmulation();
+        }
+
+        public void EstablishSpeed(int speed)
+        {
+            testerWindowPresenter.EstablishSpeed(speed);
+        }
+
+        public int AskTime()
+        {
+            return testerWindowPresenter.AskTime();
+        }
+
+        public DataTable TakeData()
+        {
+            return testerWindowPresenter.TakeData();
         }
     }
 }

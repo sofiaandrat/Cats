@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -21,12 +22,12 @@ namespace View
     public partial class TesterWindow : Window
     {
         Thread ButtonHandler;
-        TesterWidowView testerWidowView;
+        TesterWidowView testerWindowView;
         Mutex mutex;
         public TesterWindow()
         {
             InitializeComponent();
-            testerWidowView = new TesterWidowView();
+            testerWindowView = new TesterWidowView();
             mutex = new Mutex();
             ButtonHandler = new Thread(Button);
             ButtonHandler.Start();
@@ -51,15 +52,36 @@ namespace View
         {
             while(true)
             {
+                Speed.Dispatcher.BeginInvoke(new Action(delegate ()
+                {
+                   testerWindowView.EstablishSpeed((int)Speed.Value);
+                }));
                 Switch.Dispatcher.BeginInvoke(new Action(delegate ()
                 {
-                    if (Switch.Content.ToString() == "ON")
-                        testerWidowView.StartEmulation();
+                    if (Switch.Content.ToString() == "OFF")
+                        testerWindowView.StartEmulation();
                     else
-                        testerWidowView.FinishEmulation();
+                        testerWindowView.FinishEmulation();
+                }));
+                Timer.Dispatcher.BeginInvoke(new Action (delegate ()
+                {
+                    int t = testerWindowView.AskTime();
+                    Timer.Content = (t / 60).ToString() + ":" + (t - (t / 60) * 60).ToString();
+                }));
+                SpeedLabel.Dispatcher.BeginInvoke(new Action (delegate()
+                {
+                    SpeedLabel.Content = (int)Speed.Value;
+                }));
+                DataTable dataTable = new DataTable();
+                dataTable = testerWindowView.TakeData();
+                Data.Dispatcher.BeginInvoke(new Action(delegate ()
+                {
+                   Data.ItemsSource = dataTable.DefaultView;
                 }));
                 Thread.Sleep(2000);
             }
         }
+
+
     }
 }

@@ -35,7 +35,7 @@ namespace Model
             mutex.ReleaseMutex();
         }
 
-        public void Insert(string name, string email, string password, int typeId = 3)
+        public void Insert(string name, string email, string password, int typeId = 1)
         {
             mutex.WaitOne();
             string query = "INSERT INTO registration ('name', 'email', 'hash_password', 'typeId') VALUES (@name, @email, @hash_password, @typeId)";

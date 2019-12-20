@@ -18,6 +18,7 @@ namespace Model
         {
             mutex = new Mutex();
             thread = new Thread(FeedEverybody);
+            thread.Start();
         }
 
         public void StartEmulation()
@@ -53,7 +54,7 @@ namespace Model
                 Client client = new Client();
                 currentTime = client.AskTime();
                 Thread.Sleep(1000);
-                OneIteration =client.AskTime() - currentTime;
+                OneIteration = client.AskTime() - currentTime;
                 DataBaseSchedule dataBaseSchedule = new DataBaseSchedule();
                 currentTime = client.AskTime();
                 events = dataBaseSchedule.GetEvents();
