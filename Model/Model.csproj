@@ -63,7 +63,6 @@
     <Compile Include="ISynchronizationClass.cs" />
     <Compile Include="RegistrationData.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="SynchronizationClass.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

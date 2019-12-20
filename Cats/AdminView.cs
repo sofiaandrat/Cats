@@ -29,11 +29,5 @@ namespace View
             AccessRegistration form = new AccessRegistration(login, email, hash_password, typeId);
             form.Show();
         }
-
-        public void AddThread(ref Thread thread)
-        {
-            AdminPresenter adminPresenter = new AdminPresenter();
-            adminPresenter.AddThread(ref thread);
-        }
     }
 }

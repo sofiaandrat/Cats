@@ -11,7 +11,7 @@ namespace Presenter
     {
         public MainWindowPresenter()
         {
-            AutomaticFeed automaticFeed = new AutomaticFeed();
+            //AutomaticFeed automaticFeed = new AutomaticFeed();
         }
     }
 }

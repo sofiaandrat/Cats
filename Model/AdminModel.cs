@@ -25,11 +25,5 @@ namespace Model
             DataBaseUser data = new DataBaseUser();
             return data.UsersList();
         }
-
-        public void AddThread(ref Thread thread)
-        {
-            SynchronizationClass synchronizationClass = new SynchronizationClass();
-            synchronizationClass.SetThread(ref thread);
-        }
     }
 }

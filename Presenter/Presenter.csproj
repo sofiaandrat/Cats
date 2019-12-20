@@ -57,11 +57,13 @@
     <Compile Include="IMainWindowPresenter.cs" />
     <Compile Include="IManualFeedingPresenter.cs" />
     <Compile Include="IRegistrationPresenter.cs" />
+    <Compile Include="ITesterWindowPresenter.cs" />
     <Compile Include="IUserProfilerPresenter.cs" />
     <Compile Include="LoginPresenter.cs" />
     <Compile Include="MainWindowPresenter.cs" />
     <Compile Include="ManualFeedingPresenter.cs" />
     <Compile Include="RegistrationPresenter.cs" />
+    <Compile Include="TesterWindowPresenter.cs" />
     <Compile Include="UserProfilerPresenter.cs" />
   </ItemGroup>
   <ItemGroup>

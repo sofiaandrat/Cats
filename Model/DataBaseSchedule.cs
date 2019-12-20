@@ -39,10 +39,10 @@ namespace Model
             string query2 = "INSERT INTO event ('scheduleId', 'time', 'amount') VALUES (@scheduleId, @time, @amount)";
             SQLiteCommand myCommand2 = new SQLiteCommand(query2, myConnection);
             OpenConnection();
-            for (int i = 0; i < timer; i += time)
+            for (int i = 0; i < timer; i++)
             {
                 myCommand2.Parameters.AddWithValue("@scheduleId", scheduleId);
-                myCommand2.Parameters.AddWithValue("@time", i);
+                myCommand2.Parameters.AddWithValue("@time", i * time);
                 myCommand2.Parameters.AddWithValue("@amount", amount);
                 myCommand2.ExecuteNonQuery();
             }
@@ -76,7 +76,7 @@ namespace Model
                 OpenConnection();
                 SQLiteDataReader reader1 = myCommand1.ExecuteReader();
                 while (reader1.Read())
-                    events[events.Count() - 1].FeederId = reader1.GetInt32(0);
+                    events[i].FeederId = reader1.GetInt32(0);
                 CloseConnection();
             }
             mutex.ReleaseMutex();

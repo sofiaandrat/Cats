@@ -48,6 +48,11 @@ namespace Cats
                 UserProfiler form = new UserProfiler(data[1]);
                 form.Show();
             }
+            if(data[0] == 3)
+            {
+                TesterWindow form = new TesterWindow();
+                form.Show();
+            }
         }
     }
 }

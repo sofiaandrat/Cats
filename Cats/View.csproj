@@ -111,6 +111,10 @@
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegistrationView.cs" />
+    <Compile Include="TesterWidowView.cs" />
+    <Compile Include="TesterWindow.xaml.cs">
+      <DependentUpon>TesterWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserProfiler.xaml.cs">
       <DependentUpon>UserProfiler.xaml</DependentUpon>
     </Compile>
@@ -156,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Registration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TesterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

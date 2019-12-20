@@ -16,9 +16,32 @@ namespace Model
         Mutex mutex;
         public AutomaticFeed()
         {
-            thread = new Thread(FeedEverybody);
             mutex = new Mutex();
-            thread.Start();
+            thread = new Thread(FeedEverybody);
+        }
+
+        public void StartEmulation()
+        {
+            try
+            {
+                thread.Resume();
+            }
+            catch(Exception ex)
+            {
+                return;
+            }
+        }
+
+        public void FinishEmulation()
+        {
+            try
+            {
+                thread.Suspend();
+            }
+            catch(Exception ex)
+            {
+                return;
+            }
         }
 
         private void FeedEverybody()
@@ -30,13 +53,13 @@ namespace Model
                 Client client = new Client();
                 currentTime = client.AskTime();
                 Thread.Sleep(1000);
-                OneIteration = currentTime - client.AskTime();
+                OneIteration =client.AskTime() - currentTime;
                 DataBaseSchedule dataBaseSchedule = new DataBaseSchedule();
                 currentTime = client.AskTime();
                 events = dataBaseSchedule.GetEvents();
                 for(int i = 0; i < events.Count(); i++)
                 {
-                    if(events[i].Time > currentTime - 5 * OneIteration && events[i].Time < currentTime)
+                    if(events[i].Time > currentTime - 6 * OneIteration && events[i].Time <= currentTime)
                     {
                         DataBaseFeeder dataBaseFeeder = new DataBaseFeeder();
                         dataBaseFeeder.ManualFeeding(events[i].FeederId, events[i].Amount);

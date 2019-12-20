@@ -23,11 +23,5 @@ namespace Presenter
             AdminModel adminModel = new AdminModel();
             return adminModel.UserList();
         }
-
-        public void AddThread(ref Thread thread)
-        {
-            AdminModel adminModel = new AdminModel();
-            adminModel.AddThread(ref thread);
-        }
     }
 }

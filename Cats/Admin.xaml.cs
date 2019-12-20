@@ -33,7 +33,6 @@ namespace View
             mutexObj = new Mutex();
             queue = new Thread(new ThreadStart(Queue));
             AdminView adminView = new AdminView();
-            adminView.AddThread(ref queue);
             queue.Start();
         }
 

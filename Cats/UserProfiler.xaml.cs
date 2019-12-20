@@ -61,16 +61,17 @@ namespace View
             UserProfilerView userView = new UserProfilerView();
             DataGrid gd = (DataGrid)sender;
             DataRowView row_selected = gd.SelectedItem as DataRowView;
+            feeders = userView.updateFeederList(UserId);
             if (row_selected != null)
             {
                 int feederId = Convert.ToInt32(row_selected["feederId"].ToString());
                 tags = userView.showTags(feederId);
                 currentFeederId = feederId;
             }
-            Tags.Dispatcher.BeginInvoke(new Action(delegate ()
+            Tags.Dispatcher.BeginInvoke(new Action (delegate ()
             {
                 Tags.ItemsSource = tags.DefaultView;
-            }));
+            }));            
             mutex.ReleaseMutex();
         }
 
@@ -112,6 +113,7 @@ namespace View
             {
                 UserProfilerView userView = new UserProfilerView();
                 tags = userView.showTags(currentFeederId);
+                feeders = userView.updateFeederList(UserId);
                 Tags.Dispatcher.BeginInvoke(new Action(delegate ()
                 {
                     Tags.ItemsSource = tags.DefaultView;
@@ -121,7 +123,11 @@ namespace View
                     int t = userView.AskTime();
                     time.Content = (t / 60).ToString() + ":" + (t - (t / 60) * 60).ToString();
                 }));
-                Thread.Sleep(2000);
+                Feeders.Dispatcher.BeginInvoke(new Action(delegate ()
+                {
+                    Feeders.ItemsSource = feeders.DefaultView;
+                }));
+                Thread.Sleep(2000);           
             }
         }
 
