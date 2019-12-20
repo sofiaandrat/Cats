@@ -42,8 +42,8 @@ namespace Model
                         dataBaseFeeder.ManualFeeding(events[i].FeederId, events[i].Amount);
                     }
                 }
-                Thread.Sleep(5000);
                 mutex.ReleaseMutex();
+                Thread.Sleep(5000);
             }
 
         }

@@ -25,26 +25,28 @@ namespace Model
             try
             {
                 socket.Connect(ipPoint);
+                byte[] data = Encoding.Unicode.GetBytes("Time");
+                socket.Send(data);
+                data = new byte[256];
+                StringBuilder builder = new StringBuilder();
+                int bytes = 0;
+                do
+                {
+                    bytes = socket.Receive(data, data.Length, 0);
+                    builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                }
+                while (socket.Available > 0);
+                socket.Shutdown(SocketShutdown.Both);
+                socket.Close();
+                if (builder.Length != 0)
+                    return Convert.ToInt32(builder.ToString());
+                else
+                    return 0;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return 0;
             }
-            byte[] data = Encoding.Unicode.GetBytes("Time");
-            socket.Send(data);
-            data = new byte[256]; 
-            StringBuilder builder = new StringBuilder();
-            int bytes = 0; 
-
-            do
-            {
-                bytes = socket.Receive(data, data.Length, 0);
-                builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-            }
-            while (socket.Available > 0);
-            socket.Shutdown(SocketShutdown.Both);
-            socket.Close();
-            return Convert.ToInt32(builder.ToString());
         }
     }
             

@@ -39,7 +39,6 @@ namespace View
             }));
             mutex = new Mutex();
             tagsThread = new Thread(new ThreadStart(thread));
-            UserProfilerView userProfilerView = new UserProfilerView();
             tagsThread.Start();
         }
 
