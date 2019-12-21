@@ -29,5 +29,17 @@ namespace View
             AccessRegistration form = new AccessRegistration(login, email, hash_password, typeId);
             form.Show();
         }
+
+        public DataTable updateFeederList(int userId)
+        {
+            UserProfilerPresenter userProfilerPresenter = new UserProfilerPresenter();
+            return userProfilerPresenter.updateFeederList(userId);
+        }
+
+        public DataTable showTags(int feederId)
+        {
+            UserProfilerPresenter userProfilerPresenter = new UserProfilerPresenter();
+            return userProfilerPresenter.showTags(feederId);
+        }
     }
 }

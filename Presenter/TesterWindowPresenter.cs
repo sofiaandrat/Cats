@@ -44,6 +44,11 @@ namespace Presenter
             return dataForTester.TakeData();
         }
 
+        public void AddFood(int feederId, int amount)
+        {
+            DataBaseFeeder dataBaseFeeder = new DataBaseFeeder();
+            dataBaseFeeder.AddFood(feederId, amount);
+        }
     }
 
     

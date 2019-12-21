@@ -41,5 +41,10 @@ namespace View
         {
             return testerWindowPresenter.TakeData();
         }
+
+        public void AddFood(int feederId, int amount)
+        {
+            testerWindowPresenter.AddFood(feederId, amount);
+        }
     }
 }

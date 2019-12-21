@@ -13,8 +13,9 @@
         <Label x:Name="Time" HorizontalAlignment="Left" Margin="26,76,0,0" VerticalAlignment="Top" FontFamily="Yu Gothic UI" FontSize="17" Content="How often you want to feed your pet?"/>
         <TextBox x:Name="amount" HorizontalAlignment="Left" Height="33" Margin="56,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontFamily="Yu Gothic UI" FontSize="20"/>
         <TextBox x:Name="name" HorizontalAlignment="Left" Height="33" Margin="56,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontFamily="Yu Gothic UI" FontSize="20"/>
-        <Label x:Name="Name" Content="Name of schedule" HorizontalAlignment="Left" Margin="26,134,0,0" VerticalAlignment="Top" Width="259" FontFamily="Yu Gothic UI" FontSize="20"/>
+        <Label x:Name="Name" Content="Name of schedule (optional)" HorizontalAlignment="Left" Margin="26,134,0,0" VerticalAlignment="Top" Width="259" FontFamily="Yu Gothic UI" FontSize="20"/>
         <TextBox x:Name="Timer" HorizontalAlignment="Left" Height="23" Margin="56,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <Label x:Name="WrongInput" Content="Data is incorrect" HorizontalAlignment="Left" Margin="56,219,0,0" VerticalAlignment="Top" Width="228" FontSize="16" Visibility="Hidden"/>
 
     </Grid>
 </Window>

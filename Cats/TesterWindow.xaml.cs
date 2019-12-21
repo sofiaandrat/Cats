@@ -24,6 +24,9 @@ namespace View
         Thread ButtonHandler;
         TesterWidowView testerWindowView;
         Mutex mutex;
+
+        public Exception Ex { get; private set; }
+
         public TesterWindow()
         {
             InitializeComponent();
@@ -82,6 +85,36 @@ namespace View
             }
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            mutex.WaitOne();
+            IncorrectInput.Visibility = Visibility.Hidden;
+            try
+            {
+                bool flag = false;
+                for(int i = 0; i < Data.Columns.Count; i++)
+                {
+                    DataGrid gd = (DataGrid)Data;
+                    DataRowView row_selected = gd.Items[i] as DataRowView;
+                    if (row_selected != null)
+                    {
+                        int feederId = Convert.ToInt32(row_selected["feederId"].ToString());
+                        if(Convert.ToInt32(id.Text) == feederId)
+                        {
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+                if (flag == false)
+                    throw Ex;
+                testerWindowView.AddFood(Convert.ToInt32(id.Text), Convert.ToInt32(amount.Text));
+            }
+            catch (Exception Ex)
+            {
+                IncorrectInput.Visibility = Visibility.Visible;
+            }
+            mutex.ReleaseMutex();
+            }
     }
 }

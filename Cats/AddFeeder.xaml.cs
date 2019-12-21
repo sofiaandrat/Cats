@@ -20,6 +20,7 @@ namespace View
     public partial class AddFeeder : Window
     {
         private int UserId;
+        Exception Ex;
         public AddFeeder(int UserId)
         {
             InitializeComponent();
@@ -28,11 +29,18 @@ namespace View
         private void AddBowl_Click_1(object sender, RoutedEventArgs e)
         {
             WrongPassword.Visibility = Visibility.Hidden;
-            AddFeederView view = new AddFeederView();
-            if (!view.Add(UserId, Password.Password, Convert.ToInt32(amount.Text), Tag.Text))
-                WrongPassword.Visibility = Visibility.Visible;
-            else
+            try
+            {
+                AddFeederView view = new AddFeederView();
+                if (!view.Add(UserId, Password.Password, Convert.ToInt32(amount.Text), Tag.Text) || Convert.ToInt32(amount.Text) < 0)
+                    throw Ex;
                 Close();
+            }
+            catch
+            {
+                WrongPassword.Visibility = Visibility.Visible;
+            }
+                
         }
     }
 }

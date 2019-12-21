@@ -120,7 +120,7 @@ namespace Model
         public DataTable UsersList()
         {
             mutex.WaitOne();
-            string query = "SELECT name, email FROM users";
+            string query = "SELECT id, name, email FROM users";
             SQLiteCommand myCommand = new SQLiteCommand(query, this.myConnection);
             OpenConnection();
             myCommand.ExecuteNonQuery();

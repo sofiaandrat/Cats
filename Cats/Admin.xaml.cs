@@ -25,6 +25,8 @@ namespace View
         private DataTable users;
         private Thread queue;
         private static Mutex mutexObj;
+        private int SelectedUser;
+        private int SelectedFeeder;
         public Admin()
         {
             InitializeComponent();
@@ -51,6 +53,16 @@ namespace View
                 {
                     Users.ItemsSource = users.DefaultView;
                 }));
+                DataTable feeders = adminView.updateFeederList(SelectedUser);
+                Feeders.Dispatcher.BeginInvoke(new Action(delegate ()
+                {
+                    Feeders.ItemsSource = feeders.DefaultView;
+                }));
+                DataTable Tags = adminView.showTags(SelectedFeeder);
+                Feeders.Dispatcher.BeginInvoke(new Action(delegate ()
+                {
+                    tags.ItemsSource = Tags.DefaultView;
+                }));
                 Thread.Sleep(2000);
             }
         }
@@ -68,6 +80,34 @@ namespace View
                 string hash_password = row_selected["hash_password"].ToString();
                 int typeId = Convert.ToInt32(row_selected["typeId"].ToString());
                 adminView.AccessRegistration(login, email, hash_password, typeId);
+            }
+            mutexObj.ReleaseMutex();
+        }
+
+        private void Users_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            mutexObj.WaitOne();
+            AdminView adminView = new AdminView();
+            DataGrid gd = (DataGrid)sender;
+            DataRowView row_selected = gd.SelectedItem as DataRowView;
+            DataTable feeders = new DataTable();
+            if (row_selected != null)
+            {
+                SelectedUser = Convert.ToInt32(row_selected["id"].ToString());
+            }
+            mutexObj.ReleaseMutex();
+        }
+
+        private void Feeders_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            mutexObj.WaitOne();
+            AdminView adminView = new AdminView();
+            DataGrid gd = (DataGrid)sender;
+            DataRowView row_selected = gd.SelectedItem as DataRowView;
+            DataTable Tags = new DataTable();
+            if (row_selected != null)
+            {
+                SelectedFeeder = Convert.ToInt32(row_selected["feederId"].ToString());
             }
             mutexObj.ReleaseMutex();
         }

@@ -17,11 +17,12 @@ namespace Model
         Socket socket;
         public Client()
         {
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            
         }
 
         public int AskTime()
         {
+            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
             try
             {
@@ -38,6 +39,7 @@ namespace Model
 
         public void EstablishTime(int speed)
         {
+            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
             
             try

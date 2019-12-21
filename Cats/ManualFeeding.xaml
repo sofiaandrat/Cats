@@ -10,6 +10,7 @@
         <Button x:Name="AcceptFeed" Content="Accept feeding" HorizontalAlignment="Left" Height="41" Margin="47,76,0,0" VerticalAlignment="Top" Width="163" Background="#FF5FB760" Click="AcceptTag_Click"/>
         <Button x:Name="RejectFeed" Content="Reject feeding" HorizontalAlignment="Left" Height="41" Margin="252,76,0,0" VerticalAlignment="Top" Width="164" Background="#FFC25454" Click="RejectTag_Click"/>
         <TextBox x:Name="Amount" HorizontalAlignment="Left" Height="50" Margin="119,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" FontSize="25"/>
+        <Label x:Name="WrongInput" Content="Not correct data" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,22,-19.8,0" Width="123" ScrollViewer.VerticalScrollBarVisibility="Hidden" Visibility="Hidden"/>
 
     </Grid>
 </Window>

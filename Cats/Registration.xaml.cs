@@ -20,6 +20,7 @@ namespace Cats
     /// </summary>
     public partial class Registration : Window
     {
+        private Exception Ex;
         public Registration()
         {
             InitializeComponent();
@@ -27,12 +28,26 @@ namespace Cats
 
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
-            RegistrationView Registration = new RegistrationView(email.Text, Password.Password, Login.Text);
             Login_in_use.Visibility = Visibility.Hidden;
-            if (!Registration.CheckPresenter())
-                Registration.Presenter();
-            else
+            try
+            {
+                if(email.Text.Length < 5 || !email.Text.Contains("@") || !email.Text.Contains("."))
+                    throw Ex;
+                if (Password.Password.Length == 0)
+                    throw Ex;
+                if (Login.Text.Length == 0)
+                    throw Ex;
+                RegistrationView Registration = new RegistrationView(email.Text, Password.Password, Login.Text);
+                if (!Registration.CheckPresenter())
+                    Registration.Presenter();
+                else
+                    throw Ex;
+                    
+            }
+            catch
+            {
                 Login_in_use.Visibility = Visibility.Visible;
+            }
         }
     }
 }

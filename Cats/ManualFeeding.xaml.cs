@@ -20,6 +20,8 @@ namespace View
     public partial class ManualFeeding : Window
     {
         private int feederId;
+        private Exception Ex;
+
         public ManualFeeding(int feederId)
         {
             InitializeComponent();
@@ -33,8 +35,18 @@ namespace View
 
         private void AcceptTag_Click(object sender, RoutedEventArgs e)
         {
+            WrongInput.Visibility = Visibility.Hidden;
             ManualFeedingView manualFeedingView = new ManualFeedingView();
-            manualFeedingView.ManualFeed(feederId, Convert.ToInt32(Amount.Text));
+            try
+            {
+                manualFeedingView.ManualFeed(feederId, Convert.ToInt32(Amount.Text));
+                if (Convert.ToInt32(Amount.Text) < 0)
+                    throw Ex;
+            }
+            catch
+            {
+                WrongInput.Visibility = Visibility.Visible;
+            }
         }
     }
 }

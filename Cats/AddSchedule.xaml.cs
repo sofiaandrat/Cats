@@ -20,6 +20,7 @@ namespace View
     public partial class AddSchedule : Window
     {
         private int feederId;
+        private Exception Ex;
         public AddSchedule(int feederId)
         {
             InitializeComponent();
@@ -28,9 +29,20 @@ namespace View
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            AddScheduleView addScheduleView = new AddScheduleView();
-            addScheduleView.AddSchedule(Convert.ToInt32(amount.Text), Convert.ToInt32(Timer.Text), name.Text, feederId);
-            Close();
+            WrongInput.Visibility = Visibility.Hidden;
+            try
+            {
+                AddScheduleView addScheduleView = new AddScheduleView();
+                addScheduleView.AddSchedule(Convert.ToInt32(amount.Text), Convert.ToInt32(Timer.Text), name.Text, feederId);
+                if (Convert.ToInt32(amount.Text) < 0 || Convert.ToInt32(Timer.Text) < 0)
+                    throw Ex;
+                Close();
+            }
+            catch
+            {
+                WrongInput.Visibility = Visibility.Visible;
+            }
+
         }
     }
 }
